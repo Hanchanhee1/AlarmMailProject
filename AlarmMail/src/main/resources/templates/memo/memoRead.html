@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>約束アラームメール</title>
+<link rel="stylesheet" href="/css/memo.css">
+</head>
+<body>
+<form action="/memoDelete" method="post" onsubmit="return confirm('本当に削除しますか？');">
+	<div class="container">
+		<div class="header">約束アラーム</div>
+			<div class="content-box">
+				<a class="tab">内容：</a>
+				<a>友達と約束</a>
+			</div>
+			<div class="content-box">
+				<a class="tab">約束の日付：</a>
+				<a>2025-03-11 09:00</a>
+			</div>
+			<div class="content-box2">
+				<a class="tab">アラームメール機能：</a>
+				<a>ON</a>
+			</div>
+			<div class="button-container2">
+				<input class="update-btn" type="button" value="修正" onclick="location.href='/memoUpdate'">
+				<input class="cancel-btn" type="submit" value="削除">
+			</div>
+	</div>
+</form>
+</body>
+</html>

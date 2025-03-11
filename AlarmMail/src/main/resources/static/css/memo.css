@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2a6687;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    width: 477px;
+    height: 27%;
+    border: 1.5px solid black;
+}
+.header {
+    background-color: #a0d468;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1.5px solid black;
+    margin-bottom: 3%;
+}
+.section-title {
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 8%;
+    background-color: #f08080;
+    text-align: center;
+    border: 1.5px solid black;
+}
+.button-container {
+	display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.button-container2 {
+	display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+}
+.register-btn {
+    background-color: #4da6ff;
+    color: black;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    float: right;
+    border: 1.5px solid black;
+}
+.cancel-btn {
+	background-color: red;
+    color: black;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    float: right;
+    border: 1.5px solid black;
+}
+.update-btn {
+	background-color: #4da6ff;
+    color: black;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    float: right;
+    border: 1.5px solid black;
+}
+
+.title {
+	height: 8%;
+}
+.content-box {
+	background-color: bisque;
+	border: 1.5px solid black;
+	height: 25px;
+	margin-bottom: 1%;
+	border-radius: 5px;
+	position: relative;
+    width: 100%;
+}
+.content-box2 {
+	background-color: bisque;
+	border: 1.5px solid black;
+	height: 25px;
+	margin-bottom: 1%;
+	border-radius: 5px;
+	position: relative;
+    width: 44%;
+}
+.content {
+	text-decoration: none;
+	color: #000;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+
+}
+.tab {
+	padding-top: 2%;
+    padding-left: 2%;
+    font-weight: bold;
+}
+.OnOFF-container {
+	margin-bottom: 1%;
+}
+.form1 {
+	width: 83%;
+	height: 69%;
+}
+.form2 {
+	width: 73%;
+    height: 69%;
+}
