@@ -7,22 +7,22 @@
 </head>
 <body>
 <form action="/memoDelete" method="post" onsubmit="return confirm('本当に削除しますか？');">
-	<div class="container">
+	<div class="container"  th:each="memoEntity : ${memoEntity}">
 		<div class="header">約束アラーム</div>
 			<div class="content-box">
 				<a class="tab">内容：</a>
-				<a>友達と約束</a>
+				<a th:text="${memoEntity.Memo_Content}"></a>
 			</div>
 			<div class="content-box">
 				<a class="tab">約束の日付：</a>
-				<a>2025-03-11 09:00</a>
+				<a th:text="${#temporals.format(memoEntity.Memo_Time, 'yyyy-MM-dd HH:mm')}"></a>
 			</div>
 			<div class="content-box2">
 				<a class="tab">アラームメール機能：</a>
-				<a>ON</a>
+				<a th:text="${memoEntity.Memo_OnOFF}"></a>
 			</div>
 			<div class="button-container2">
-				<input class="update-btn" type="button" value="修正" onclick="location.href='/memoUpdate'">
+				<input class="update-btn" type="button" value="修正" th:onclick="|location.href='/memoUpdate?Memo_No=${memoEntity.Memo_No}'|">
 				<input class="cancel-btn" type="submit" value="削除">
 			</div>
 	</div>

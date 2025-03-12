@@ -8,9 +8,10 @@ import lombok.Data;
 @Data
 public class AlarmMailEntity {
 	
-	private int memono;
-	private String memocontent;
-	private LocalDateTime time;
-	private String onoff;
+	private int Memo_No;
+	private String Memo_Content;
+	private LocalDateTime Memo_Time;
+	private String Memo_OnOFF;
+	private int Memo_Status;
 
 }

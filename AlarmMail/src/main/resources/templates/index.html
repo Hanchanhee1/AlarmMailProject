@@ -14,41 +14,17 @@
 		<div class="title">
 			<div class="section-title">進行中</div>
 		</div>
-		<div class="content-box">
-			<a href="/memo" class="content">進行中1</a>
-			<span class="date">2025-03-11 09:11</span>
-		</div>
-		<div class="content-box">
-			<a href="/memo" class="content">進行中2</a>
-			<span class="date">2025-03-11 09:11</span>
-		</div>
-		<div class="content-box">
-			<a href="/memo" class="content">進行中3</a>
-			<span class="date">2025-03-11 09:11</span>
-		</div>
-		<div class="content-box">
-			<a href="/memo" class="content">進行中4</a>
-			<span class="date">2025-03-11 09:11</span>
+		<div th:each="memo : ${memolist1}" th:if="${memo.Memo_Status == 0}" class="content-box">
+			<a th:href="@{/memoRead(Memo_No=${memo.Memo_No})}" th:text="${memo.Memo_Content}" class="content"></a>
+			<span class="date" th:text="${#temporals.format(memo.Memo_Time, 'yyyy-MM-dd HH:mm')}"></span>
 		</div>
 
 		<div class="title">
 			<div class="section-title">完了</div>
 		</div>
-		<div class="content-box">
-			<a href="/memo" class="content">完了1</a>
-			<span class="date">2025-03-11 09:11</span>
-		</div>
-		<div class="content-box">
-			<a href="/memo" class="content">完了2</a>
-			<span class="date">2025-03-11 09:11</span>
-		</div>
-		<div class="content-box">
-			<a href="/memo" class="content">完了3</a>
-			<span class="date">2025-03-11 09:11</span>
-		</div>
-		<div class="content-box">
-			<a href="/memo" class="content">完了4</a>
-			<span class="date">2025-03-11 09:11</span>
+		<div th:each="memo : ${memolist2}" th:if="${memo.Memo_Status == 1}" class="content-box">
+			<a th:href="@{/memoRead(Memo_No=${memo.Memo_No})}" th:text="${memo.Memo_Content}" class="content"></a>
+			<span class="date" th:text="${#temporals.format(memo.Memo_Time, 'yyyy-MM-dd HH:mm')}"></span>
 		</div>
 	</div>
 

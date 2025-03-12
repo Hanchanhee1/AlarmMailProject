@@ -9,19 +9,20 @@
 	<div class="container">
 		<div class="header">約束アラーム(修正)</div>
 		<form action="/memoUpdatePro" method="post" onsubmit="return confirm('修正しますか？');">
+		<input type="hidden" name="Memo_No" th:value="${memoEntity.Memo_No}" />
 			<div class="content-box">
 				<a class="tab">内容：</a>
-				<input type="text" name="memocontent" value="" class="form1">
+				<input type="text" name="Memo_Content" th:value="${memoEntity.Memo_Content}" class="form1">
 			</div>
 			<div class="content-box">
 				<a class="tab">約束の日付：</a>
-				<input type="datetime-local" name="time" class="form2">
+				<input type="datetime-local" name="Memo_Time" th:value="${#temporals.format(memoEntity.Memo_Time, 'yyyy-MM-dd HH:mm')}" class="form2">
 			</div>
 			<div class="OnOFF-container">
 	        	<label>ON</label>
-	        	<input type="radio" name="onoff" value="on" checked>
+	        	<input type="radio" name="Memo_OnOFF" value="on" th:checked="${memoEntity.Memo_OnOFF == 'on'}">
 	        	<label>OFF</label>
-	        	<input type="radio" name="onoff" value="off">
+	        	<input type="radio" name="Memo_OnOFF" value="off" th:checked="${memoEntity.Memo_OnOFF == 'off'}">
 	    	</div>
 			<div class="button-container">
 				<input class="register-btn" type="submit" value="登録">
