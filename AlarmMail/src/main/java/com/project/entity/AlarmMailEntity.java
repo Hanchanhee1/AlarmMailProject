@@ -11,7 +11,7 @@ public class AlarmMailEntity {
 	private int Memo_No;
 	private String Memo_Content;
 	private LocalDateTime Memo_Time;
-	private String Memo_OnOFF;
+	private String Memo_OnOff;
 	private int Memo_Status;
 
 }

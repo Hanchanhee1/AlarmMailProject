@@ -33,10 +33,15 @@ public class MemoService {
 	
 	// 約束メモ変更
 	public int updateMemo(AlarmMailEntity memoEntity) {
-	    return memoMapper.update(memoEntity);
+		return memoMapper.update(memoEntity);
 	}
 	// 約束メモ削除
 	public int deleteMemo(int Memo_No) {
-	    return memoMapper.delete(Memo_No);
+		return memoMapper.delete(Memo_No);
+	}
+	
+	// 約束メモ登録
+	public int insertMemo(AlarmMailEntity memoEntity) {
+		return memoMapper.insert(memoEntity);
 	}
 }

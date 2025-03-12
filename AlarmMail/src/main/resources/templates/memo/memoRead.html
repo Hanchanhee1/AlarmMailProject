@@ -7,6 +7,7 @@
 </head>
 <body>
 <form action="/memoDelete" method="post" onsubmit="return confirm('本当に削除しますか？');">
+<input type="hidden" name="Memo_No" th:value="${memoEntity.Memo_No}" />
 	<div class="container"  th:each="memoEntity : ${memoEntity}">
 		<div class="header">約束アラーム</div>
 			<div class="content-box">
@@ -19,7 +20,7 @@
 			</div>
 			<div class="content-box2">
 				<a class="tab">アラームメール機能：</a>
-				<a th:text="${memoEntity.Memo_OnOFF}"></a>
+				<a th:text="${memoEntity.Memo_OnOff}"></a>
 			</div>
 			<div class="button-container2">
 				<input class="update-btn" type="button" value="修正" th:onclick="|location.href='/memoUpdate?Memo_No=${memoEntity.Memo_No}'|">

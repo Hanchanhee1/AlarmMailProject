@@ -11,16 +11,16 @@
 		<form action="/memoWritePro" method="post" onsubmit="return confirm('登録しますか？');">
 			<div class="content-box">
 				<a class="tab">内容：</a>
-				<input type="text" name="memocontent" value="" class="form1">
+				<input type="text" name="Memo_Content" class="form1" required>
 			</div>
 			<div class="content-box">
 				<a class="tab">約束の日付：</a>
-				<input type="datetime-local" name="time" class="form2">
+				<input type="datetime-local" name="Memo_Time" class="form2" required>
 			</div>
-			<div class="OnOFF-container">
-	        	<input type="radio" name="onoff" value="on" checked>
+			<div class="OnOff-container">
+	        	<input type="radio" name="Memo_OnOff" value="on" checked>
 	        	<label>ON</label>
-	        	<input type="radio" name="onoff" value="off">
+	        	<input type="radio" name="Memo_OnOff" value="off">
 	        	<label>OFF</label>
 	    	</div>
 			<div class="button-container">
@@ -29,6 +29,5 @@
 			</div>
 		</form>
 	</div>
-
 </body>
 </html>

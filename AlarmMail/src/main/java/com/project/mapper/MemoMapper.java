@@ -23,5 +23,8 @@ public interface MemoMapper {
 	
 	// 約束メモ削除
 	int delete(int Memo_No);
+	
+	// 約束メモ登録
+	int insert(AlarmMailEntity memoEntity);
 
 }

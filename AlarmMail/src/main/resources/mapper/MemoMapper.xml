@@ -5,12 +5,12 @@
 	
 	<!-- 予約メモ進行中をAll照会 -->
 	<select id="selectAll1" resultType="com.project.entity.AlarmMailEntity">
-		select * from Memotable where Memo_Status=0 order by Memo_Time desc
+		select * from Memotable where Memo_Status=0 order by Memo_Time asc
 	</select>
 	
 	<!-- 予約メモ完了をAll照会 -->
 	<select id="selectAll2" resultType="com.project.entity.AlarmMailEntity">
-		select * from Memotable where Memo_Status=1 order by Memo_Time desc
+		select * from Memotable where Memo_Status=1 order by Memo_Time asc
 	</select>
 	
 	<!-- 予約メモ１つ照会 -->
@@ -28,5 +28,11 @@
 	<delete id="delete" parameterType="int">
 		delete Memotable where Memo_No = #{Memo_No}
 	</delete>
+	
+	<!-- 約束メモ登録 -->
+	<insert id="insert" parameterType="com.project.entity.AlarmMailEntity">
+		insert into MemoTable (Memo_No,Memo_Content,Memo_Time,Memo_OnOff,Memo_Status) values 
+		(memo_seq.nextval,#{Memo_Content},#{Memo_Time},#{Memo_OnOff},#{Memo_Status})
+	</insert>
 
 </mapper>
