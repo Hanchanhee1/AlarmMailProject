@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.mapper.MemoMapper">
+	
+	<!-- 予約メモ進行中をAll照会 -->
+	<select id="memoSelectAll" resultType="com.project.entity.MemoEntity">
+		SELECT
+			*
+		FROM
+			Memotable
+		WHERE
+			memo_Status = 0
+		ORDER BY
+			reminder_Time
+	</select>
+	
+	<!-- 予約メモ完了をAll照会 -->
+	<select id="completSelectAll" resultType="com.project.entity.MemoEntity">
+		SELECT
+			*
+		FROM
+			Memotable
+		where
+			memo_Status = 1
+		ORDER BY 
+			reminder_Time DESC
+	</select>
+	
+	<!-- 予約メモ１つ照会 -->
+	<select id="memoOneSelect" parameterType="int" resultType="com.project.entity.MemoEntity">
+		SELECT
+			*
+		FROM
+			Memotable
+		WHERE
+			memo_Id = #{memo_Id}
+	</select>
+	
+	<!-- 約束メモ変更 -->
+	<update id="memoUpdate">
+		UPDATE
+			Memotable 
+		SET
+			content = #{content},
+			reminder_Time = #{reminder_Time}, 
+			alarm_Status = #{alarm_Status}
+		WHERE
+			memo_Id = #{memo_Id}
+	</update>
+	
+	<!-- 約束メモ削除 -->
+	<delete id="memoDelete" parameterType="int">
+		DELETE
+			Memotable
+		WHERE
+			memo_Id = #{memo_Id}
+	</delete>
+	
+	<!-- 約束メモ登録 -->
+	<insert id="memoInsert" parameterType="com.project.entity.MemoEntity">
+		insert into MemoTable (
+			memo_Id,
+			content,
+			reminder_Time,
+			alarm_Status,
+			memo_Status
+		) values (
+			memo_seq.nextval,
+			#{content},
+			#{reminder_Time},
+			#{alarm_Status},
+			#{memo_Status}
+		)
+	</insert>
+	
+	<!-- メール送信条件 -->
+	<select id="emailSend" resultType="com.project.entity.MemoEntity">
+    	SELECT
+    		*
+    	FROM
+    		MemoTable 
+    	WHERE
+    		memo_status = 0
+    	AND
+    		alarm_status = 'on'
+    	AND TRUNC (reminder_time) = TRUNC(SYSDATE + 1)
+	</select>
+	
+	<!-- メモ状態変更 -->
+	<update id="updateMemoStatus">
+    	UPDATE
+    		MemoTable
+    	SET
+    		memo_Status = 1
+    	WHERE
+    		memo_Status = 0
+    	AND
+    		reminder_Time &lt; SYSDATE <!-- 「 &lt:< , &gt:> 」 -->
+	</update>
+
+</mapper>

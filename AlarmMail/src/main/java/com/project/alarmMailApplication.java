@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.project.mapper")
-public class AlarmMailApplication {
+public class alarmMailApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AlarmMailApplication.class, args);
+		SpringApplication.run(alarmMailApplication.class, args);
 	}
 
 }

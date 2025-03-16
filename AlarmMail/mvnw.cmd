@@ -98,7 +98,7 @@ if (! $distributionUrlNameMain -or ($distributionUrlName -eq $distributionUrlNam
 # prepare tmp dir
 $TMP_DOWNLOAD_DIR_HOLDER = New-TemporaryFile
 $TMP_DOWNLOAD_DIR = New-Item -Itemtype Directory -Path "$TMP_DOWNLOAD_DIR_HOLDER.dir"
-$TMP_DOWNLOAD_DIR_HOLDER.Delete() | Out-Null
+$TMP_DOWNLOAD_DIR_HOLDER.memoDelete() | Out-Null
 trap {
   if ($TMP_DOWNLOAD_DIR.Exists) {
     try { Remove-Item $TMP_DOWNLOAD_DIR -Recurse -Force | Out-Null }
@@ -128,7 +128,7 @@ if ($distributionSha256Sum) {
   }
   Import-Module $PSHOME\Modules\Microsoft.PowerShell.Utility -Function Get-FileHash
   if ((Get-FileHash "$TMP_DOWNLOAD_DIR/$distributionUrlName" -Algorithm SHA256).Hash.ToLower() -ne $distributionSha256Sum) {
-    Write-Error "Error: Failed to validate Maven distribution SHA-256, your Maven distribution might be compromised. If you updated your Maven version, you need to update the specified distributionSha256Sum property."
+    Write-Error "Error: Failed to validate Maven distribution SHA-256, your Maven distribution might be compromised. If you memoUpdated your Maven version, you need to memoUpdate the specified distributionSha256Sum property."
   }
 }
 

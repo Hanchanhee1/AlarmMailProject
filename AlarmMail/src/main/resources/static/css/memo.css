@@ -66,7 +66,7 @@ body {
     float: right;
     border: 1.5px solid black;
 }
-.update-btn {
+.memoUpdate-btn {
 	background-color: #4da6ff;
     color: black;
     font-weight: bold;

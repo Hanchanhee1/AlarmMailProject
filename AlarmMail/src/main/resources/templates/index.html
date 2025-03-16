@@ -5,6 +5,7 @@
 <title>約束アラームメール</title>
 <link rel="stylesheet" href="/css/main.css">
 </head>
+<!-- メイン画面 -->
 <body>
 	<div class="container">
 		<div class="header">約束アラームメール</div>
@@ -14,23 +15,23 @@
 		<div class="title">
 			<div class="section-title">進行中</div>
 		</div>
-		<div th:each="memo : ${memolist1}" th:if="${memo.Memo_Status == 0}" class="content-box">
-			<a th:href="@{/memoRead(Memo_No=${memo.Memo_No})}" th:text="${memo.Memo_Content}" class="content"></a>
-			<span class="date" th:text="${#temporals.format(memo.Memo_Time, 'yyyy-MM-dd HH:mm')}"></span>
+		<div th:each="memo : ${memoList}" th:if="${memo.memo_Status == 0}" class="content-box">
+			<a th:href="@{/memoRead(memo_Id=${memo.memo_Id})}" th:text="${memo.content}" class="content"></a>
+			<span class="date" th:text="${#temporals.format(memo.reminder_Time, 'yyyy-MM-dd HH:mm')}"></span>
 		</div>
 		
 		<div class="title">
 			<div class="section-title">完了</div>
 		</div>
-		<div th:each="memo : ${memolist2}" th:if="${memo.Memo_Status == 1}" class="content-box">
-			<a th:href="@{/memoRead(Memo_No=${memo.Memo_No})}" th:text="${memo.Memo_Content}" class="content"></a>
-			<span class="date" th:text="${#temporals.format(memo.Memo_Time, 'yyyy-MM-dd HH:mm')}"></span>
+		<div th:each="memo : ${completList}" th:if="${memo.memo_Status == 1}" class="content-box">
+			<a th:href="@{/memoRead(memo_Id=${memo.memo_Id})}" th:text="${memo.content}" class="content"></a>
+			<span class="date" th:text="${#temporals.format(memo.reminder_Time, 'yyyy-MM-dd HH:mm')}"></span>
 		</div>
 	</div>
 
 	<script>
 		// リアルタイム Script
-		function updateClock() {
+		function memoUpdateClock() {
 			const now = new Date();
 			const formatted = now.toLocaleString('ja-JP', {
 				year : 'numeric',
@@ -43,8 +44,8 @@
 			});
 			document.getElementById('clock').textContent = formatted;
 		}
-		setInterval(updateClock, 1000);
-		updateClock();
+		setInterval(memoUpdateClock, 1000);
+		memoUpdateClock();
 	</script>
 </body>
 </html>

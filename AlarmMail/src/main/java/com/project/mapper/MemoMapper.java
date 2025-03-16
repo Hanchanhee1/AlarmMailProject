@@ -4,27 +4,33 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.project.entity.AlarmMailEntity;
+import com.project.entity.memoEntity;
 
 @Mapper
 public interface MemoMapper {
 	
 	// 予約メモ進行中をAll照会
-	List<AlarmMailEntity> selectAll1();
+	List<memoEntity> memoSelectAll();
 	
 	// 予約メモ完了をAll照会
-	List<AlarmMailEntity> selectAll2();
+	List<memoEntity> completSelectAll();
 	
 	// 予約メモ１つ照会
-	AlarmMailEntity oneSelect(int Memo_No);
+	memoEntity memoOneSelect(int memo_Id);
 	
 	// 約束メモ変更
-	int update(AlarmMailEntity memoEntity);
+	int memoUpdate(memoEntity memoEntity);
 	
 	// 約束メモ削除
-	int delete(int Memo_No);
+	int memoDelete(int memo_Id);
 	
 	// 約束メモ登録
-	int insert(AlarmMailEntity memoEntity);
-
+	int memoInsert(memoEntity memoEntity);
+	
+	// メール送信条件
+	List<memoEntity> emailSend();
+	
+	// メモ状態変更
+	int updateMemoStatus();
+	
 }

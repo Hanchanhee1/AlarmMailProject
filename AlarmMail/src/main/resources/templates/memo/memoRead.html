@@ -5,26 +5,29 @@
 <title>約束アラームメール</title>
 <link rel="stylesheet" href="/css/memo.css">
 </head>
+<!-- メモ詳細画面 -->
 <body>
 <form action="/memoDelete" method="post" onsubmit="return confirm('本当に削除しますか？');">
-<input type="hidden" name="Memo_No" th:value="${memoEntity.Memo_No}" />
+<input type="hidden" name="memo_Id" th:value="${memoEntity.memo_Id}" />
 	<div class="container"  th:each="memoEntity : ${memoEntity}">
 		<div class="header">約束アラーム</div>
 			<div class="content-box">
 				<a class="tab">内容：</a>
-				<a th:text="${memoEntity.Memo_Content}"></a>
+				<a th:text="${memoEntity.content}"></a>
 			</div>
 			<div class="content-box">
-				<a class="tab">約束の日付：</a>
-				<a th:text="${#temporals.format(memoEntity.Memo_Time, 'yyyy-MM-dd HH:mm')}"></a>
+				<a class="tab">約束の日時：</a>
+				<a th:text="${#temporals.format(memoEntity.reminder_Time, 'yyyy-MM-dd HH:mm')}"></a>
 			</div>
 			<div class="content-box2">
 				<a class="tab">アラームメール機能：</a>
-				<a th:text="${memoEntity.Memo_OnOff}"></a>
+				<a th:text="${memoEntity.alarm_Status}"></a>
 			</div>
 			<div class="button-container2">
-				<input class="update-btn" type="button" value="修正" th:onclick="|location.href='/memoUpdate?Memo_No=${memoEntity.Memo_No}'|">
 				<input class="cancel-btn" type="submit" value="削除">
+    			<th:block th:if="${memoEntity.memo_Status == 0}">
+        			<input class="memoUpdate-btn" type="button" value="修正" th:onclick="|location.href='/memoUpdate?memo_Id=${memoEntity.memo_Id}'|">
+    			</th:block>
 			</div>
 	</div>
 </form>

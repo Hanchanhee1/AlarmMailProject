@@ -5,22 +5,24 @@
 <title>約束アラームメール</title>
 <link rel="stylesheet" href="/css/memo.css">
 </head>
+<!-- メモ登録画面 -->
 <body>
 	<div class="container">
 		<div class="header">約束アラーム(登録)</div>
 		<form action="/memoWritePro" method="post" onsubmit="return confirm('登録しますか？');">
 			<div class="content-box">
 				<a class="tab">内容：</a>
-				<input type="text" name="Memo_Content" class="form1" required>
+				<input type="text" name="content" class="form1" required>
 			</div>
 			<div class="content-box">
-				<a class="tab">約束の日付：</a>
-				<input type="datetime-local" name="Memo_Time" class="form2" required>
+				<a class="tab">約束の日時：</a>
+				<input type="datetime-local" name="reminder_Time" class="form2" required>
 			</div>
 			<div class="OnOff-container">
-	        	<input type="radio" name="Memo_OnOff" value="on" checked>
+				<a class="tab">アラームメール機能：</a>
+	        	<input type="radio" name="alarm_Status" value="on" checked>
 	        	<label>ON</label>
-	        	<input type="radio" name="Memo_OnOff" value="off">
+	        	<input type="radio" name="alarm_Status" value="off">
 	        	<label>OFF</label>
 	    	</div>
 			<div class="button-container">
