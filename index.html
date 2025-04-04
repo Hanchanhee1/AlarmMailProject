@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>約束アラームメール</title>
+<link rel="stylesheet" href="/css/main.css">
+</head>
+<!-- メイン画面 -->
+<body>
+	<div class="container">
+		<div class="header">約束アラームメール</div>
+		<div id="clock" class="realtime">現在時間</div>
+		<a href="/memoWrite" class="register-btn">登録</a>
+
+		<div class="title">
+			<div class="section-title">進行中</div>
+		</div>
+		<div th:each="memo : ${memoList}" th:if="${memo.memo_Status == 0}" class="content-box">
+			<a th:href="@{/memoRead(memo_Id=${memo.memo_Id})}" th:text="${memo.content}" class="content"></a>
+			<span class="date" th:text="${#temporals.format(memo.reminder_Time, 'yyyy-MM-dd HH:mm')}"></span>
+		</div>
+		
+		<div class="title">
+			<div class="section-title">完了</div>
+		</div>
+		<div th:each="memo : ${completList}" th:if="${memo.memo_Status == 1}" class="content-box">
+			<a th:href="@{/memoRead(memo_Id=${memo.memo_Id})}" th:text="${memo.content}" class="content"></a>
+			<span class="date" th:text="${#temporals.format(memo.reminder_Time, 'yyyy-MM-dd HH:mm')}"></span>
+		</div>
+	</div>
+
+	<script>
+		// リアルタイム Script
+		function memoUpdateClock() {
+			const now = new Date();
+			const formatted = now.toLocaleString('ja-JP', {
+				year : 'numeric',
+				month : '2-digit',
+				day : '2-digit',
+				weekday : 'short',
+				hour : '2-digit',
+				minute : '2-digit',
+				second : '2-digit'
+			});
+			document.getElementById('clock').textContent = formatted;
+		}
+		setInterval(memoUpdateClock, 1000);
+		memoUpdateClock();
+	</script>
+</body>
+</html>
